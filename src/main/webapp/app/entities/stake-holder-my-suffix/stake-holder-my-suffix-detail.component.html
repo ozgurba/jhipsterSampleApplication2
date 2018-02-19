@@ -1,0 +1,40 @@
+
+<div *ngIf="stakeHolder">
+    <h2><span>Stake Holder</span> {{stakeHolder.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{stakeHolder.description}}</span>
+        </dd>
+        <dt><span>Agency</span></dt>
+        <dd>
+            <span>{{stakeHolder.agency}}</span>
+        </dd>
+        <dt><span>Unit</span></dt>
+        <dd>
+            <span>{{stakeHolder.unit}}</span>
+        </dd>
+        <dt><span>Stake Holder</span></dt>
+        <dd>
+            <div *ngIf="stakeHolder.stakeHolderId">
+                <a [routerLink]="['/stake-holder-my-suffix', stakeHolder.stakeHolderId]">{{stakeHolder.stakeHolderId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'stake-holder-my-suffix/'+ stakeHolder.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
