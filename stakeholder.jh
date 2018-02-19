@@ -1,0 +1,23 @@
+entity StakeHolder {
+	regionName String
+    subStakeHolder StakeHolder
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	StakeHolder{subStakeHolder} to StakeHolder
+	
+}
+
+
+
+// Set pagination options
+paginate StakeHolder with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee, Job
+// Set an angular suffix
+angularSuffix * with mySuffix
