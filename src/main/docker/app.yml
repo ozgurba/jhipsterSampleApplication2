@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jhipstersampleapplication2-app:
+        image: jhipstersampleapplication2
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://jhipstersampleapplication2-postgresql:5432/jhipsterSampleApplication2
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhipstersampleapplication2-postgresql:
+        extends:
+            file: postgresql.yml
+            service: jhipstersampleapplication2-postgresql
